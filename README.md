@@ -26,8 +26,8 @@ Riviera Routes is a web application designed to help tourists and casual hikers 
 
 ## Progress Updates
 
-- [Date] Added Trail model with fields for name, description, start location, and difficulty.
-- [Date] Integrated Pillow for handling image uploads to trail descriptions.
+- Added Trail model with fields for name, description, start location, and difficulty.
+- Integrated Pillow for handling image uploads to trail descriptions.
 
 ## Challenges and Solutions
 
