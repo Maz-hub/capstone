@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700;800&display=swap");
+
+// CSS Reset
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Create a root stacking context */
+#root,
+#__next {
+  isolation: isolate;
+}
+
+:root {
+  // Primary interface colors
+  --color-primary: #00adb5; // Primary accent color, for important elements
+  --color-secondary: #393e46; // Secondary color, for less prominent UI elements
+  --color-background: #222831; // Main background color
+  --color-text: #eeeeee; // Primary text color
+
+  // Additional colors
+  --color-accent: #00fff5; // Bright accent color, good for links or highlights
+  --color-light: #e3feff; // Very light color, useful for backgrounds or light themes
+
+  // Utility colors
+  --color-dark: #000000; // Pure black, useful for text or shadows
+  --color-white: #ffffff; // Pure white, useful for contrasting text or backgrounds
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}

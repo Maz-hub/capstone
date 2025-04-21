@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700;800&display=swap");
+*,
+*::before,
+*::after {
+  box-sizing: border-box; }
+
+* {
+  margin: 0; }
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%; }
+
+/* Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit; }
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  word-wrap: break-word;
+  hyphens: auto; }
+
+/* Create a root stacking context */
+#root,
+#__next {
+  isolation: isolate; }
+
+:root {
+  --color-primary: #00adb5;
+  --color-secondary: #393e46;
+  --color-background: #222831;
+  --color-text: #eeeeee;
+  --color-accent: #00fff5;
+  --color-light: #e3feff;
+  --color-dark: #000000;
+  --color-white: #ffffff; }
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased; }
+
+a {
+  color: var(--color-accent);
+  text-decoration: none; }
+
+.hero {
+  position: relative;
+  width: 100%;
+  overflow: hidden; }
+
+.homepage_img {
+  background-size: cover;
+  background-position: center; }
+
+.logo_box {
+  position: absolute;
+  top: 1rem;
+  left: 2rem; }
+
+.logo_text {
+  color: var(--color-light);
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 2rem; }
+
+.heading_box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: left; }
+
+.heading_primary {
+  color: var(--color-white);
+  text-transform: uppercase; }
+
+.heading_primary_main {
+  display: block;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  letter-spacing: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 1.8rem; }
+
+.heading_primary_sub {
+  display: block;
+  font-size: clamp(1.3rem, 4vw, 2rem);
+  font-weight: 300;
+  margin-top: 0.5rem;
+  letter-spacing: 0.5rem; }
+
+footer {
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  text-align: center;
+  padding: 1rem 0; }

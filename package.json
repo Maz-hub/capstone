@@ -1,0 +1,15 @@
+{
+  "name": "capstone",
+  "version": "1.0.0",
+  "description": "CS50W Capstone: Riviera Routes: A web application to explore hiking trails around the Swiss Riviera.",
+  "main": "index.js",
+  "scripts": {
+    "scss": "node-sass --watch trails/static/scss/ -o trails/static/css/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^9.0.0"
+  }
+}
