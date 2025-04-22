@@ -105,6 +105,74 @@ a {
   margin-top: 0.5rem;
   letter-spacing: 0.5rem; }
 
+/* Main Section */
+.section-title {
+  background-color: var(--color-white);
+  padding: 3rem 2rem;
+  text-align: center; }
+  .section-title h2 {
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    color: var(--color-primary);
+    font-weight: 600; }
+
+/* Cards */
+.trail-section {
+  padding: 4rem 2rem;
+  background-color: var(--color-background); }
+
+.trail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  align-items: start; }
+
+.trail-card {
+  background-color: var(--color-secondary);
+  border-radius: 1rem;
+  overflow: hidden;
+  padding: 1rem;
+  color: var(--color-white);
+  text-align: center; }
+  .trail-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 0.5rem; }
+  .trail-card .trail-name {
+    margin-top: 1rem;
+    font-weight: 600;
+    font-size: 1.2rem; }
+  .trail-card .trail-location,
+  .trail-card .trail-canton {
+    font-size: 0.9rem;
+    color: var(--color-light); }
+
+.trail-map {
+  grid-row: 1 / span 3;
+  height: 100%; }
+
+#map {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem; }
+
+@media (max-width: 768px) {
+  .trail-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; }
+  .trail-map {
+    order: -1;
+    height: 400px;
+    width: 100%; }
+  #map {
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    background-color: red !important; }
+  .trail-card {
+    width: 100%; } }
+
 footer {
   background-color: var(--color-secondary);
   color: var(--color-white);
