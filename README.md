@@ -1,39 +1,106 @@
-# capstone
-
-CS50W Capstone: Riviera Routes: A web application to explore hiking trails around the Swiss Riviera.
-
-# Riviera Routes
+# Swiss Romande Hikes
 
 ## Overview
 
-Riviera Routes is a web application designed to help tourists and casual hikers discover beautiful hiking trails in the Swiss Riviera. Users can view detailed information about each trail, including maps, photos, and current weather conditions.
+**Swiss Romande Hikes** is a personal hiking guide and trail explorer for the French-speaking region of Switzerland. It offers real, practical trail suggestions based on my own hiking experiences, with original photos, detailed trail descriptions, and an interactive map. Built as my CS50W Capstone Project, this web app is designed to help casual hikers and tourists discover scenic and safe routes across the Swiss Romande.
 
-## Technologies Used
+All hikes featured on the site are ones I’ve personally completed, and are presented in a helpful, down-to-earth style — from me to you.
 
-- Django
-- Python
-- Pillow (for image handling)
-- Google Maps API (for interactive maps)
-- MeteoSwiss API (for weather information)
+## Distinctiveness and Complexity
 
-## Setup Instructions
+**Swiss Romande Hikes** is a personal guide-based web app with a geospatial component. It features a map-based interface, dynamic trail data, and a user-centric design inspired by real-world tourism needs.
 
-1. Clone the repository.
-2. Set up a virtual environment and activate it.
-3. Install dependencies: `pip install -r requirements.txt`
-4. Run migrations: `python3 manage.py migrate`
-5. Start the server: `python3 manage.py runserver`
+The application uses:
 
-## Progress Updates
+- **Mapbox GL JS** to render an interactive map with custom markers
+- **JavaScript and the DOM** to connect map markers with trail cards, allowing for a dynamic and engaging experience
+- A **custom SCSS-based design**, for full control over layout and responsive behavior
+- **Django models** to manage trail data and prepare for future extensibility, such as user accounts, reviews, or real-time trail updates
 
-- Added Trail model with fields for name, description, start location, and difficulty.
-- Integrated Pillow for handling image uploads to trail descriptions.
+This project also stands out because it is **based on my personal hiking experience** and includes original content and photos. It combines real-world storytelling with technical implementation — including responsive design, external APIs, and scalable structure.
 
-## Challenges and Solutions
+Together, these elements demonstrate both creative originality and the technical complexity expected of a CS50W Capstone.
 
-- Faced issues with Pillow installation; resolved by ensuring virtual environment was active before installing the library.
+## Features
 
-## Future Features
+### Core Functionality (Completed)
 
-- User authentication for saving favorite trails.
-- Advanced filtering options based on weather conditions and difficulty.
+- 📍 Interactive Map:
+
+  - Uses Mapbox GL JS to display the Swiss Romande region
+  - Custom boot-shaped markers for each trail
+  - Clicking a trail card scrolls and zooms the map to the corresponding location
+
+- 🥾 Trail Cards:
+
+  - Display 6 real trails with original photos and location info
+  - Responsive grid layout for desktop, tablet, and mobile
+  - Each card includes trail name, location, and canton
+
+- 🗺️ Mobile-First Layout:
+
+  - Fully responsive design using CSS Grid and SCSS
+  - Trail cards and map reflow intuitively on smaller screens
+
+- 🎨 Custom UI:
+  - Styled entirely with SCSS (no Bootstrap)
+  - Google Fonts + theme colors for a personal, clean look
+
+### Optional Future Features
+
+- 🧾 Trail Detail Pages (with full description, weather, difficulty, etc.)
+- 👤 User accounts to save favorites or add comments
+- 🌦️ Weather integration using MeteoSwiss API
+- 📸 Photo gallery per trail with scrollable carousel
+- 🔍 Trail filter by distance, season, or difficulty
+
+## How to Run Locally
+
+To run Swiss Romande Hikes locally, follow these steps:
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/YOUR-USERNAME/capstone.git
+cd capstone
+```
+
+### 2. Set up a virtual environment
+
+```bash
+python3 -m venv myvenv
+source myvenv/bin/activate
+```
+
+### 3. Install required Python packages
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Install and compile SCSS (requires Node.js)
+
+```bash
+npm install
+npm run scss
+```
+
+### 5. Apply Django migrations
+
+```bash
+python3 manage.py migrate
+```
+
+### 6. Run the development server
+
+```bash
+python3 manage.py runserver
+```
+
+## Project Structure
+
+capstone/ ├── rivieraroutes/ # Main Django project folder (settings, URLs) ├── trails/ # Core app: views, models, templates │ ├── templates/trails/ # HTML templates (layout, homepage, etc.) │ ├── static/css/ # Compiled CSS from SCSS │ ├── static/scss/ # Main SCSS files and partials │ ├── static/img/ # Images used in homepage/cards/map markers │ ├── static/js/ # JavaScript (e.g. map.js for Mapbox interaction) ├── db.sqlite3 # Default Django development database ├── requirements.txt # Python dependencies ├── package.json # Node/NPM config for SCSS build ├── README.md # This file
+
+```markdown
+Trail data is currently hardcoded for launch (6 hikes), but the structure supports future integration with Django models and dynamic content.
+```
