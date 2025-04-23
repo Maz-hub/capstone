@@ -1,10 +1,34 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Trail
+from .models import Trail, TrailImage
+import requests
 
 def home(request):
     featured_trails = Trail.objects.all()[:6] # Get the first 6 trails
     return render(request, 'trails/home.html', {'featured_trails': featured_trails})
 
+
 def trail_detail(request, slug):
     trail = get_object_or_404(Trail, slug=slug)
-    return render(request, 'trails/trail_detail.html', {'trail': trail})
+    images = TrailImage.objects.filter(trail=trail)
+
+    # Weather API call
+    weather_data = None
+    try:
+        response = requests.get(
+            "https://api.open-meteo.com/v1/forecast",
+            params={
+                "latitude": trail.latitude,
+                "longitude": trail.longitude,
+                "current_weather": True
+            }
+        )
+        data = response.json()
+        weather_data = data.get("current_weather")
+    except Exception as e:
+        print("Weather API error:", e)
+
+    return render(request, "trails/trail_detail.html", {
+        "trail": trail,
+        "images": images,
+        "weather": weather_data
+    })
