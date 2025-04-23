@@ -1,0 +1,44 @@
+{% extends "trails/layout.html" %}
+{% load static %}
+
+{% block content %}
+<div class="trail-detail-container">
+    <div class="trail-columns">
+
+        <!-- Info Boxes Column -->
+        <div class="trail-info">
+            <div class="info-box">
+                <h4>Distance</h4>
+                <p>{{ trail.distance }} km</p>
+            </div>
+            <div class="info-box">
+                <h4>Duration</h4>
+                <p>{{ trail.duration|timesince:"0" }}</p>
+            </div>
+            <div class="info-box">
+                <h4>Ascent</h4>
+                <p>{{ trail.ascent }} m</p>
+            </div>
+            <div class="info-box">
+                <h4>Descent</h4>
+                <p>{{ trail.descent }} m</p>
+            </div>
+            <div class="info-box">
+                <h4>Difficulty</h4>
+                <p>{{ trail.difficulty }}</p>
+            </div>
+        </div>
+
+        <!-- Main Content Column -->
+        <div class="trail-description">
+            <div class="trail-image">
+                <img src="{{ trail.image.url }}" alt="{{ trail.name }}">
+            </div>
+            <h1 class="trail-title">{{ trail.name }}</h1>
+            <h2>Description</h2>
+            <p>{{ trail.description }}</p>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

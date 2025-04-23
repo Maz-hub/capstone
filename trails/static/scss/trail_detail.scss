@@ -1,0 +1,64 @@
+.trail-detail-container {
+  padding: 4rem 2rem;
+  background-color: var(--color-background);
+  color: var(--color-white);
+}
+
+.trail-columns {
+  display: grid;
+  grid-template-columns: 1fr 2fr; // 1 column for info, 2 for description
+  gap: 3rem;
+  align-items: start;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; // stack on mobile
+  }
+}
+
+.trail-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.info-box {
+  background-color: var(--color-secondary);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+
+  h4 {
+    font-size: 1rem;
+    color: var(--color-light);
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+}
+
+.trail-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.trail-image img {
+  width: 100%;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+}
+
+.trail-description {
+  line-height: 1.6;
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+}

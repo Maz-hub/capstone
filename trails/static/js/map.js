@@ -8,70 +8,74 @@ document.addEventListener("DOMContentLoaded", function () {
       container: "map",
       style: "mapbox://styles/mapbox/outdoors-v12",
       center: [6.85, 46.5], // Swiss Romande center
-      zoom: 9,
+      zoom: 8.5,
     });
 
     map.addControl(new mapboxgl.NavigationControl());
 
-    // Marker 1: Rochers-de-Naye
-    const boot1 = document.createElement("img");
-    boot1.src = "/static/img/hike_boot.png";
-    boot1.style.width = "40px";
-    boot1.style.height = "40px";
+    // Boot icon factory
+    function createBootIcon() {
+      const icon = document.createElement("img");
+      icon.src = "/static/img/hike_boot.png";
+      icon.style.width = "40px";
+      icon.style.height = "40px";
+      return icon;
+    }
 
+    // Markers for each trail
     const markers = {
-      rocher: new mapboxgl.Marker({ element: boot1 })
-        .setLngLat([6.9795, 46.4296])
-        .setPopup(new mapboxgl.Popup().setText("Rochers-de-Naye"))
+      CreuxDuVar: new mapboxgl.Marker({ element: createBootIcon() })
+        .setLngLat([6.7289, 46.9296])
+        .setPopup(new mapboxgl.Popup().setText("Creux du Van"))
         .addTo(map),
 
-      lavaux: new mapboxgl.Marker({ element: boot2 })
-        .setLngLat([6.7274, 46.4916])
-        .setPopup(new mapboxgl.Popup().setText("Lavaux Vineyards"))
+      DentDeJaman: new mapboxgl.Marker({ element: createBootIcon() })
+        .setLngLat([6.9613, 46.4401])
+        .setPopup(new mapboxgl.Popup().setText("Dent de Jaman"))
         .addTo(map),
 
-      // ...and so on!
+      Grammont: new mapboxgl.Marker({ element: createBootIcon() })
+        .setLngLat([6.8627, 46.3214])
+        .setPopup(new mapboxgl.Popup().setText("Le Grammont"))
+        .addTo(map),
+
+      LacDeTaney: new mapboxgl.Marker({ element: createBootIcon() })
+        .setLngLat([6.8986, 46.2939])
+        .setPopup(new mapboxgl.Popup().setText("Lac de Taney"))
+        .addTo(map),
+
+      LesPleiades: new mapboxgl.Marker({ element: createBootIcon() })
+        .setLngLat([6.9321, 46.4848])
+        .setPopup(new mapboxgl.Popup().setText("Les Pléiades"))
+        .addTo(map),
+
+      LaTineDeConflens: new mapboxgl.Marker({ element: createBootIcon() })
+        .setLngLat([6.7125, 46.613])
+        .setPopup(new mapboxgl.Popup().setText("La Tine de Conflens"))
+        .addTo(map),
     };
 
-    // Marker 2: Lavaux
-    const boot2 = document.createElement("img");
-    boot2.src = "/static/img/hike_boot.png";
-    boot2.style.width = "40px";
-    boot2.style.height = "40px";
+    // Card-to-map interaction
+    //document.querySelectorAll(".trail-card").forEach((card) => {
+    //  card.addEventListener("click", () => {
+    //    const trailId = card.dataset.trail;
+    //    const marker = markers[trailId];
 
-    const marker2 = new mapboxgl.Marker({ element: boot2 })
-      .setLngLat([6.7274, 46.4916])
-      .setPopup(new mapboxgl.Popup().setText("Lavaux Vineyards"))
-      .addTo(map);
+    //    if (marker) {
+    //      map.flyTo({
+    //        center: marker.getLngLat(),
+    //        zoom: 12,
+    //        speed: 1.2,
+    //        curve: 1,
+    //      });
 
-    // Marker 3: Creux du Van
-    const boot3 = document.createElement("img");
-    boot3.src = "/static/img/hike_boot.png";
-    boot3.style.width = "40px";
-    boot3.style.height = "40px";
+    //      marker.togglePopup();
+    //    }
+    //  });
+    // });
 
-    const marker3 = new mapboxgl.Marker({ element: boot3 })
-      .setLngLat([6.7289, 46.9296])
-      .setPopup(new mapboxgl.Popup().setText("Creux du Van"))
-      .addTo(map);
-
-    // Connect cards to map markers
-    document.querySelectorAll(".trail-card").forEach((card) => {
-      card.addEventListener("click", () => {
-        const trailId = card.dataset.trail; // e.g. "rocher"
-        const marker = markers[trailId];
-
-        if (marker) {
-          map.flyTo({
-            center: marker.getLngLat(),
-            zoom: 12,
-            speed: 1.2,
-            curve: 1,
-          });
-
-          marker.togglePopup(); // show popup when zoomed in
-        }
-      });
-    });
+    setTimeout(() => {
+      map.resize();
+    }, 400);
   }
 });

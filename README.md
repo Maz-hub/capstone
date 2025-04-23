@@ -99,7 +99,15 @@ python3 manage.py runserver
 
 ## Project Structure
 
-capstone/ ├── rivieraroutes/ # Main Django project folder (settings, URLs) ├── trails/ # Core app: views, models, templates │ ├── templates/trails/ # HTML templates (layout, homepage, etc.) │ ├── static/css/ # Compiled CSS from SCSS │ ├── static/scss/ # Main SCSS files and partials │ ├── static/img/ # Images used in homepage/cards/map markers │ ├── static/js/ # JavaScript (e.g. map.js for Mapbox interaction) ├── db.sqlite3 # Default Django development database ├── requirements.txt # Python dependencies ├── package.json # Node/NPM config for SCSS build ├── README.md # This file
+capstone/
+├── rivieraroutes/ # Main Django project folder (settings, URLs) ├── trails/ # Core app: views, models, templates │
+├── templates/trails/ # HTML templates (layout, homepage, etc.) │ ├── static/css/ # Compiled CSS from SCSS │
+├── static/scss/ # Main SCSS files and partials │
+├── static/img/ # Images used in homepage/cards/map markers │
+├── static/js/ # JavaScript (e.g. map.js for Mapbox interaction) ├── db.sqlite3 # Default Django development database
+├── requirements.txt # Python dependencies
+├── package.json # Node/NPM config for SCSS build
+├── README.md # This file
 
 ```markdown
 Trail data is currently hardcoded for launch (6 hikes), but the structure supports future integration with Django models and dynamic content.
