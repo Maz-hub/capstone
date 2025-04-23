@@ -5,6 +5,7 @@
 <div class="trail-detail-container">
     <h1 class="trail-title">{{ trail.name }}</h1>
 
+    <!-- 1st Column (Info Boxes)-->
     <div class="trail-detail-grid">
         <div class="trail-info">
             <!-- Distance -->
@@ -38,21 +39,21 @@
         </div>
 
 
-        <!-- 2nd Column (Images + Description) -->
+        <!-- 2nd Column (Images) -->
         <div class="trail-photos">
             <div class="trail-gallery">
                 <img src="{{ images.0.image.url }}" alt="Image 1">
                 <img src="{{ images.2.image.url }}" alt="Image 3">
             </div>
 
-            <!-- 3rd Column (Images + Description) -->
+            <!-- 3rd Column (Images) -->
             <div class="trail-gallery">
                 <img src="{{ images.1.image.url }}" alt="Image 2">
                 <img src="{{ images.3.image.url }}" alt="Image 4">
             </div>
         </div>
 
-        <!-- Description Row (spanning cols 2 and 3) -->
+        <!-- Description Row -->
         <div class="trail-description">
             <h2>Description</h2>
             <p>{{ trail.description|linebreaks|linebreaks }}</p>

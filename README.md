@@ -29,29 +29,33 @@ Together, these elements demonstrate both creative originality and the technical
 
   - Uses Mapbox GL JS to display the Swiss Romande region
   - Custom boot-shaped markers for each trail
-  - Clicking a trail card scrolls and zooms the map to the corresponding location
+  - Responsive layout for both map and trail details
 
 - 🥾 Trail Cards:
 
   - Display 6 real trails with original photos and location info
   - Responsive grid layout for desktop, tablet, and mobile
-  - Each card includes trail name, location, and canton
+  - Clicking a trail card opens a dedicated trail detail page
 
-- 🗺️ Mobile-First Layout:
+  - 🗺️ Trail Detail Pages:
+  - Individual pages for each hike, dynamically rendered from Django
+  - Includes image galleries, structured trail information, and full description
+  - Swisstopo map embed for geographical context
 
-  - Fully responsive design using CSS Grid and SCSS
-  - Trail cards and map reflow intuitively on smaller screens
+- 🌦️ Weather Integration:
+
+  - Uses Open-Meteo API to display current weather per trail
+  - Real-time temperature and wind speed shown dynamically
 
 - 🎨 Custom UI:
   - Styled entirely with SCSS (no Bootstrap)
   - Google Fonts + theme colors for a personal, clean look
+  - Fully responsive design using CSS Grid and Flexbox
 
 ### Optional Future Features
 
-- 🧾 Trail Detail Pages (with full description, weather, difficulty, etc.)
 - 👤 User accounts to save favorites or add comments
-- 🌦️ Weather integration using MeteoSwiss API
-- 📸 Photo gallery per trail with scrollable carousel
+- 📸 Scrollable photo gallery per trail
 - 🔍 Trail filter by distance, season, or difficulty
 
 ## How to Run Locally
@@ -100,14 +104,21 @@ python3 manage.py runserver
 ## Project Structure
 
 capstone/
-├── rivieraroutes/ # Main Django project folder (settings, URLs) ├── trails/ # Core app: views, models, templates │
-├── templates/trails/ # HTML templates (layout, homepage, etc.) │ ├── static/css/ # Compiled CSS from SCSS │
-├── static/scss/ # Main SCSS files and partials │
-├── static/img/ # Images used in homepage/cards/map markers │
-├── static/js/ # JavaScript (e.g. map.js for Mapbox interaction) ├── db.sqlite3 # Default Django development database
-├── requirements.txt # Python dependencies
-├── package.json # Node/NPM config for SCSS build
+├── rivieraroutes/ # Main Django project folder (settings, URLs)  
+├── trails/ # Core app: views, models, templates  
+│ ├── templates/trails/ # HTML templates (layout, homepage, detail pages, etc.)  
+│ ├── static/css/ # Compiled CSS from SCSS  
+│ ├── static/scss/ # Main SCSS files and partials  
+│ ├── static/img/ # Images used in homepage/cards/map markers  
+│ ├── static/js/ # JavaScript (e.g. map.js for Mapbox interaction)  
+│ ├── models.py # Trail, TrailImage models  
+│ ├── views.py # Views including homepage and detail views  
+├── media/ # Folder for uploaded trail images  
+├── db.sqlite3 # Default Django development database  
+├── package.json # Node/NPM config for SCSS build  
 ├── README.md # This file
+
+---
 
 ```markdown
 Trail data is currently hardcoded for launch (6 hikes), but the structure supports future integration with Django models and dynamic content.
