@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Trail, TrailImage
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Trail, TrailImage, Comment
+from .forms import CommentForm
 import requests
 
 def home(request):
@@ -20,6 +21,7 @@ def home(request):
 def trail_detail(request, slug):
     trail = get_object_or_404(Trail, slug=slug)
     images = TrailImage.objects.filter(trail=trail)
+    comments = Comment.objects.filter(trail=trail).order_by("-timestamp")
 
     # Weather API call
     weather_data = None
@@ -37,10 +39,23 @@ def trail_detail(request, slug):
     except Exception as e:
         print("Weather API error:", e)
 
+    # Comment form handling
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.trail = trail
+            new_comment.save()
+            return redirect("trail_detail", slug=slug)
+    else:
+        form = CommentForm()
+
     return render(request, "trails/trail_detail.html", {
         "trail": trail,
         "images": images,
-        "weather": weather_data
+        "weather": weather_data,
+        "comments": comments,
+        "form": form
     })
 
 def custom_404(request, exception):
