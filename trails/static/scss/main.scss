@@ -21,8 +21,13 @@
 .logo_text {
   color: var(--color-light);
   text-transform: uppercase;
+  text-decoration: none;
   font-weight: 900;
   font-size: 1rem;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .heading_box {

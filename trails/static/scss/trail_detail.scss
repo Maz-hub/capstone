@@ -66,6 +66,11 @@
   color: var(--color-white);
   padding: 2rem;
   border-radius: 1rem;
+
+  p {
+    text-align: justify;
+    margin-bottom: 1.2rem;
+  }
 }
 
 .trail-description h2 {

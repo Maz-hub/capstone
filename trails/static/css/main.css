@@ -177,6 +177,9 @@ a {
   color: var(--color-white);
   padding: 2rem;
   border-radius: 1rem; }
+  .trail-description p {
+    text-align: justify;
+    margin-bottom: 1.2rem; }
 
 .trail-description h2 {
   font-size: 2rem;
@@ -252,8 +255,11 @@ a {
 .logo_text {
   color: var(--color-light);
   text-transform: uppercase;
+  text-decoration: none;
   font-weight: 900;
   font-size: 1rem; }
+  .logo_text:hover {
+    opacity: 0.8; }
 
 .heading_box {
   position: absolute;

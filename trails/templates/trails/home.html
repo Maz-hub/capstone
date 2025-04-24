@@ -26,7 +26,7 @@
             <img src="{% static 'img/fallback.jpg' %}" alt="{{ trail.name }}" />
             {% endif %}
             <h3 class="trail-name">{{ trail.name }}</h3>
-            <p class="trail-canton">Canton of {{ trail.start_location }}</p>
+            <p class="trail-canton">{{ trail.canton }}</p>
         </a>
         {% endfor %}
 
