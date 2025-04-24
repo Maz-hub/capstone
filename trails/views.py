@@ -3,8 +3,17 @@ from .models import Trail, TrailImage
 import requests
 
 def home(request):
-    featured_trails = Trail.objects.all()
-    return render(request, 'trails/home.html', {'featured_trails': featured_trails})
+    difficulty = request.GET.get('difficulty')
+    
+    if difficulty:
+        featured_trails = Trail.objects.filter(difficulty=difficulty)
+    else:
+        featured_trails = Trail.objects.all()
+        
+    return render(request, 'trails/home.html', {
+        'featured_trails': featured_trails,
+        'selected_difficulty': difficulty
+    })
 
 
 

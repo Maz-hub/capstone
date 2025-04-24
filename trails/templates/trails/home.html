@@ -15,7 +15,24 @@
     <h2>Trails Around the Swiss Romande</h2>
 </section>
 
+
+
+
 <div class="trail-section">
+    <!-- Filter by Difficulty -->
+<div class="filter-container">
+    <form method="get">
+        <label for="difficulty">Filter by Difficulty:</label>
+        <select name="difficulty" id="difficulty" onchange="this.form.submit()">
+            <option value="">All Levels</option>
+            <option value="Easy" {% if selected_difficulty == "Easy" %}selected{% endif %}>Easy</option>
+            <option value="Intermediate" {% if selected_difficulty == "Intermediate" %}selected{% endif %}>Intermediate</option>
+            <option value="Moderate" {% if selected_difficulty == "Moderate" %}selected{% endif %}>Moderate</option>
+        </select>
+    </form>
+</div>
+
+
     <div class="trail-grid">
         <!-- Loop through all the trails for cards -->
         {% for trail in featured_trails %}
