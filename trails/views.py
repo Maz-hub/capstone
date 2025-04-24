@@ -33,3 +33,6 @@ def trail_detail(request, slug):
         "images": images,
         "weather": weather_data
     })
+
+def custom_404(request, exception):
+    return render(request, 'trails/404.html', status=404)
