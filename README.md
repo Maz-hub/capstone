@@ -37,7 +37,8 @@ Together, these elements demonstrate both creative originality and the technical
   - Responsive grid layout for desktop, tablet, and mobile
   - Clicking a trail card opens a dedicated trail detail page
 
-  - 🗺️ Trail Detail Pages:
+- 🗺️ Trail Detail Pages:
+
   - Individual pages for each hike, dynamically rendered from Django
   - Includes image galleries, structured trail information, and full description
   - Swisstopo map embed for geographical context

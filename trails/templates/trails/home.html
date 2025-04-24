@@ -1,7 +1,4 @@
-{% extends "trails/layout.html" %}
-{% load static %}
-
-{% block content %}
+{% extends "trails/layout.html" %} {% load static %} {% block content %}
 <div class="hero">
     <img class="homepage_img" src="{% static 'img/Riviera_Routes_hp.png' %}" alt="Swiss Riviera Trail" />
 
@@ -18,51 +15,24 @@
     <h2>Trails Around the Swiss Romande</h2>
 </section>
 
-
 <div class="trail-section">
     <div class="trail-grid">
-        <!-- card 1 -->
-        <div class="trail-card" data-trail="CreuxDuVar">
-            <img src="{% static 'img/Creux-du-var_5.jpg' %}" alt="Creux du Van">
-            <h3 class="trail-name">Creux du Van</h3>
-            <p class="trail-canton">Canton of Neuchâtel</p>
-        </div>
-        <!-- card 2 -->
-        <div class="trail-card" data-trail="DentDeJaman">
-            <img src="{% static 'img/Dent du jaman_5.jpg' %}" alt="Dent de Jaman">
-            <h3 class="trail-name">Dent de Jaman</h3>
-            <p class="trail-canton">Canton of Vaud</p>
-        </div>
-        <!-- card 3 -->
-        <div class="trail-card" data-trail="Grammont">
-            <img src="{% static 'img/Grammont_3.jpg' %}" alt="Le Grammont">
-            <h3 class="trail-name">Le Grammont</h3>
-            <p class="trail-canton">Canton of Valais</p>
-        </div>
-        <!-- card 4 -->
-        <div class="trail-card" data-trail="LacDeTaney">
-            <img src="{% static 'img/lac-de-tanay_3.jpg' %}" alt="Lac de Taney">
-            <h3 class="trail-name">Lac de Taney</h3>
-            <p class="trail-canton">Canton of Valais</p>
-        </div>
-        <!-- card 5 -->
-        <div class="trail-card" data-trail="LesPleiades">
-            <img src="{% static 'img/Les Pleiades_1.jpg' %}" alt="Les Pléiades">
-            <h3 class="trail-name">Les Pléiades</h3>
-            <p class="trail-canton">Canton of Vaud</p>
-        </div>
-        <!-- card 6 -->
-        <div class="trail-card" data-trail="LaTineDeConflens">
-            <img src="{% static 'img/Tine_Conflens_3.jpg' %}" alt="La Tine de Conflens">
-            <h3 class="trail-name">La Tine de Conflens</h3>
-            <p class="trail-canton">Canton of Vaud</p>
-        </div>
-
+        <!-- Loop through all the trails for cards -->
+        {% for trail in featured_trails %}
+        <a href="{% url 'trail_detail' trail.slug %}" class="trail-card">
+            {% if trail.image %}
+            <img src="{{ trail.image.url }}" alt="{{ trail.name }}" />
+            {% else %}
+            <img src="{% static 'img/fallback.jpg' %}" alt="{{ trail.name }}" />
+            {% endif %}
+            <h3 class="trail-name">{{ trail.name }}</h3>
+            <p class="trail-canton">Canton of {{ trail.start_location }}</p>
+        </a>
+        {% endfor %}
 
         <!-- Map -->
         <div class="trail-map">
-            <div id="map" style="width: 100%; height: 100%; border-radius: 1rem;"></div>
-
+            <div id="map" style="width: 100%; height: 100%; border-radius: 1rem"></div>
         </div>
     </div>
 </div>
@@ -73,24 +43,35 @@
     </div>
     <div class="tips_content">
         <ul class="tips-list">
-            <li><strong>Start early:</strong> Trails can take longer than expected — and some parts can be tricky in
-                late afternoon light.</li>
-            <li><strong>Stay aware:</strong> Take short breaks to stay focused, especially on longer or steeper trails.
-                Reassess your pace and your plan as you go — it’s okay to change direction.
+            <li>
+                <strong>Start early:</strong> Trails can take longer than expected — and
+                some parts can be tricky in late afternoon light.
             </li>
-            <li><strong>Water, always:</strong> Even if it's cool outside, bring enough water. Some trails don’t have
-                fountains along the way.</li>
-            <li><strong>Know your limits:</strong> Choose hikes that match your energy for the day — not just what looks
-                pretty.</li>
-            <li><strong>Gear matters:</strong> Thunderstorms or fog can sneak up on you. Use sturdy hiking shoes with
-                good grip to stay safe and comfortable. A light jacket and a rain cover are always a good idea.</li>
-            <li><strong>Plan your route:</strong> Always allow extra time and be prepared with an alternative route if
-                needed. Check trail conditions and weather before starting.
+            <li>
+                <strong>Stay aware:</strong> Take short breaks to stay focused,
+                especially on longer or steeper trails. Reassess your pace and your plan
+                as you go — it’s okay to change direction.
+            </li>
+            <li>
+                <strong>Water, always:</strong> Even if it's cool outside, bring enough
+                water. Some trails don’t have fountains along the way.
+            </li>
+            <li>
+                <strong>Know your limits:</strong> Choose hikes that match your energy
+                for the day — not just what looks pretty.
+            </li>
+            <li>
+                <strong>Gear matters:</strong> Thunderstorms or fog can sneak up on you.
+                Use sturdy hiking shoes with good grip to stay safe and comfortable. A
+                light jacket and a rain cover are always a good idea.
+            </li>
+            <li>
+                <strong>Plan your route:</strong> Always allow extra time and be
+                prepared with an alternative route if needed. Check trail conditions and
+                weather before starting.
             </li>
         </ul>
-
     </div>
 </section>
-
 
 {% endblock %}
