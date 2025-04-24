@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify # For slug generation
+from django.utils import timezone # For timezone-aware timestamps
 
 
 # Trail model to store information about hiking trails
@@ -31,3 +32,13 @@ class TrailImage(models.Model):
 
     def __str__(self):
         return f"Image for {self.trail.name}"
+    
+
+class Comment(models.Model):
+    trail = models.ForeignKey('Trail', on_delete=models.CASCADE, related_name='comments')
+    name = models.CharField(max_length=100)
+    content = models.TextField()
+    created_at = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return f"Comment by {self.name} on {self.trail.name}"
