@@ -4,15 +4,18 @@ from django.utils.text import slugify # For slug generation
 
 # Trail model to store information about hiking trails
 class Trail(models.Model):
-    name = models.CharField(max_length=200)
-    description = models.TextField()
-    map_embed_url = models.TextField(blank=True, null=True, help_text="Paste only the iframe src URL")
-    latitude = models.FloatField(help_text="Latitude of the trail")
-    longitude = models.FloatField(help_text="Longitude of the trail")
-    distance = models.CharField(max_length=20, help_text="e.g. 14.5")
-    duration = models.CharField(max_length=20, help_text="e.g. 1 hour, 4h 30min")
-    difficulty = models.CharField(max_length=100)
-    slug = models.SlugField(unique=True, blank=True)
+    name = models.CharField(max_length=200) # Name of the trail
+    slug = models.SlugField(unique=True, blank=True) # Slug for URL
+    description = models.TextField() # Description of the trail
+    image = models.ImageField(upload_to='trail_images/', blank=True, null=True)  # image for homepage
+    canton = models.CharField(max_length=100)  # Canton for homepage display
+    latitude = models.FloatField(help_text="Latitude of the trail") # Latitude for weather
+    longitude = models.FloatField(help_text="Longitude of the trail") # Longitude for weather
+    distance = models.CharField(max_length=20, help_text="e.g. 14.5") # Distance of the trail info-box
+    duration = models.CharField(max_length=20, help_text="e.g. 1 hour, 4h 30min") # Duration of the trail info-box
+    difficulty = models.CharField(max_length=100) # Difficulty of the trail info-box
+    map_embed_url = models.TextField(blank=True, null=True, help_text="Paste only the iframe src URL") # Map embed URL for the trail
+    
 
     def save(self, *args, **kwargs):
         if not self.slug:
