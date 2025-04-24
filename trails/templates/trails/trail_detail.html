@@ -1,76 +1,120 @@
-{% extends "trails/layout.html" %}
-{% load static %}
-
-{% block content %}
+{% extends "trails/layout.html" %} {% load static %} {% block content %}
 <div class="trail-detail-container">
-    <h1 class="trail-title">{{ trail.name }}</h1>
+  <h1 class="trail-title">{{ trail.name }}</h1>
 
-    <!-- 1st Column (Info Boxes)-->
-    <div class="trail-detail-grid">
-        <div class="trail-info">
-            <!-- Distance -->
-            <div class="info-box">
-                <p class="info-label">Distance</p>
-                <p class="info-value">{{ trail.distance }} km</p>
-            </div>
-            <!-- Duration -->
-            <div class="info-box">
-                <p class="info-label">Duration</p>
-                <p class="info-value">{{ trail.duration }}</p>
-            </div>
-            <!-- Diffucult< -->
-            <div class="info-box">
-                <p class="info-label">Difficulty</p>
-                <p class="info-value">{{ trail.difficulty }}</p>
-            </div>
-            <!-- Weather -->
-            {% if weather %}
-            <div class="info-box weather-box">
-                <p class="info-label">Weather now</p>
-                <p class="info-value">Temperature: {{ weather.temperature }}°C</p>
-                <p class="info-value">Wind: {{ weather.windspeed }} km/h</p>
-            </div>
-            {% else %}
-            <div class="info-box weather-box">
-                <h4>Weather</h4>
-                <p>Not available at the moment.</p>
-            </div>
-            {% endif %}
-        </div>
-
-
-        <!-- 2nd Column (Images) -->
-        <div class="trail-photos">
-            <div class="trail-gallery">
-                <img src="{{ images.0.image.url }}" alt="Image 1">
-                <img src="{{ images.2.image.url }}" alt="Image 3">
-            </div>
-
-            <!-- 3rd Column (Images) -->
-            <div class="trail-gallery">
-                <img src="{{ images.1.image.url }}" alt="Image 2">
-                <img src="{{ images.3.image.url }}" alt="Image 4">
-            </div>
-        </div>
-
-        <!-- Description Row -->
-        <div class="trail-description">
-            <h2>Description</h2>
-            <p>{{ trail.description|linebreaks }}</p>
-        </div>
+  <!-- 1st Column (Info Boxes)-->
+  <div class="trail-detail-grid">
+    <div class="trail-info">
+      <!-- Distance -->
+      <div class="info-box">
+        <p class="info-label">Distance</p>
+        <p class="info-value">{{ trail.distance }} km</p>
+      </div>
+      <!-- Duration -->
+      <div class="info-box">
+        <p class="info-label">Duration</p>
+        <p class="info-value">{{ trail.duration }}</p>
+      </div>
+      <!-- Diffucult< -->
+      <div class="info-box">
+        <p class="info-label">Difficulty</p>
+        <p class="info-value">{{ trail.difficulty }}</p>
+      </div>
+      <!-- Weather -->
+      {% if weather %}
+      <div class="info-box weather-box">
+        <p class="info-label">Weather now</p>
+        <p class="info-value">Temperature: {{ weather.temperature }}°C</p>
+        <p class="info-value">Wind: {{ weather.windspeed }} km/h</p>
+      </div>
+      {% else %}
+      <div class="info-box weather-box">
+        <h4>Weather</h4>
+        <p>Not available at the moment.</p>
+      </div>
+      {% endif %}
     </div>
 
+    <!-- 2nd Column (Images) -->
+    <div class="trail-photos">
+      <div class="trail-gallery">
+        <img src="{{ images.0.image.url }}" alt="Image 1" />
+        <img src="{{ images.2.image.url }}" alt="Image 3" />
+      </div>
 
-    <!-- Full-width Map Embed -->
-    {% if trail.map_embed_url %}
-    <div class="trail-map-embed">
-        <iframe src="{{ trail.map_embed_url }}" style="border: 0; width: 100%; height: 500px;" allow="geolocation">
-        </iframe>
-
-        <noscript>
-            <p>Map preview unavailable. <a href="{{ trail.map_embed_url }}" target="_blank">Click here to view on
-                    Swisstopo</a></p>
-        </noscript>
+      <!-- 3rd Column (Images) -->
+      <div class="trail-gallery">
+        <img src="{{ images.1.image.url }}" alt="Image 2" />
+        <img src="{{ images.3.image.url }}" alt="Image 4" />
+      </div>
     </div>
-    {% endif %}
-    {% endblock %}
+
+    <!-- Description Row -->
+    <div class="trail-description">
+      <h2>Description</h2>
+      <p>{{ trail.description|linebreaks }}</p>
+    </div>
+  </div>
+
+  <!-- Full-width Map Embed -->
+  {% if trail.map_embed_url %}
+  <div class="trail-map-embed">
+    <iframe
+      src="{{ trail.map_embed_url }}"
+      style="border: 0; width: 100%; height: 500px"
+      allow="geolocation"
+    >
+    </iframe>
+
+    <noscript>
+      <p>
+        Map preview unavailable.
+        <a href="{{ trail.map_embed_url }}" target="_blank"
+          >Click here to view on Swisstopo</a
+        >
+      </p>
+    </noscript>
+  </div>
+  {% endif %}
+
+  <!-- Comments Section -->
+  <div class="trail-comments">
+    <div class="comments-intro">
+      <p>
+        Have you hiked this trail? Share your thoughts, tips, or favorite
+        moment! Whether it's a great photo spot, a tricky part of the path, or
+        something to pack — your advice can help others enjoy the hike too.
+      </p>
+    </div>
+
+    <h2>Hiker Comments</h2>
+
+    <!-- Existing Comments -->
+    {% for comment in comments %}
+    <div class="comment">
+      <p>
+        <strong>{{ comment.name }}</strong> — {{ comment.created_at|date:"F j,
+        Y" }}
+      </p>
+      <p>{{ comment.text|linebreaks }}</p>
+    </div>
+    {% empty %}
+    <p>No comments yet. Be the first to share your thoughts!</p>
+    {% endfor %}
+
+    <!-- Comment Form -->
+    <h3>Leave a Comment</h3>
+    <form method="POST">
+      {% csrf_token %}
+      <div>
+        <input type="text" name="name" placeholder="Your name" required />
+      </div>
+      <div>
+        <textarea name="text" placeholder="Your comment..." required></textarea>
+      </div>
+      <button type="submit">Post Comment</button>
+    </form>
+  </div>
+
+  {% endblock %}
+</div>
