@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Trail, TrailImage
+from .models import Trail, TrailImage, Comment
 
 
 # Register your models here.
@@ -11,3 +11,10 @@ class TrailAdmin(admin.ModelAdmin):
     search_fields = ("name", "description")
 
 admin.site.register(TrailImage)
+
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ("name", "trail", "created_at")
+    list_filter = ("trail", "created_at")
+    search_fields = ("name", "text")

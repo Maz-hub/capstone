@@ -37,7 +37,7 @@ class TrailImage(models.Model):
 class Comment(models.Model):
     trail = models.ForeignKey('Trail', on_delete=models.CASCADE, related_name='comments')
     name = models.CharField(max_length=100)
-    content = models.TextField()
+    text = models.TextField()
     created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

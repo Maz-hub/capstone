@@ -91,7 +91,8 @@ a {
   padding: 1.5rem;
   border-radius: 1rem;
   text-align: center;
-  font-weight: 600; }
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
 
 .trail-photos {
   display: grid;
@@ -107,38 +108,182 @@ a {
       height: 100%;
       object-fit: cover;
       border-radius: 0.75rem;
-      margin-bottom: 1rem; }
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
 
 .trail-description {
   grid-column: 1 / span 3;
   background-color: var(--color-background);
   color: var(--color-white);
   padding: 2rem;
-  border-radius: 1rem; }
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
   .trail-description p {
     text-align: justify;
-    margin-bottom: 1.2rem; }
+    margin-bottom: 1.2rem;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    line-height: 1.6; }
 
 .trail-description h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
   color: var(--color-primary); }
 
-.trail-map-full {
-  margin-top: 3rem; }
+/* Map and Comments Grid */
+.trail-map-and-comments {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  padding: 3rem 2rem;
+  align-items: start;
+  background-color: var(--color-background); }
+
+.trail-map-embed {
+  grid-column: 1;
+  background-color: var(--color-white);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
+
+.trail-map-embed iframe {
+  width: 100%;
+  height: 500px;
+  border: 0;
+  display: block; }
+
+.trail-map-embed noscript p {
+  padding: 1rem;
+  text-align: center;
+  color: var(--color-dark);
+  font-size: clamp(0.9rem, 2vw, 1rem); }
+
+.trail-map-embed noscript a {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 600; }
+
+.trail-map-embed noscript a:hover {
+  text-decoration: underline; }
+
+.comments-container {
+  grid-column: 2 / span 2;
+  background-color: var(--color-secondary);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; }
+  .comments-container .comments-intro h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--color-primary);
+    margin-bottom: 0.5rem; }
+  .comments-container .comments-intro p {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: var(--color-light); }
+  .comments-container .trail-comments h4 {
+    color: var(--color-white);
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    margin-bottom: 1rem; }
+  .comments-container .trail-comments ul {
+    list-style: none;
+    padding: 0;
+    margin: 0; }
+  .comments-container .trail-comments li {
+    padding: 1.5rem;
+    background-color: var(--color-background);
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05); }
+    .comments-container .trail-comments li strong {
+      display: block;
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      color: var(--color-accent);
+      margin-bottom: 0.25rem; }
+    .comments-container .trail-comments li em {
+      display: block;
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      color: var(--color-light);
+      margin-bottom: 0.5rem; }
+    .comments-container .trail-comments li p {
+      font-size: clamp(0.9rem, 2.2vw, 1rem);
+      line-height: 1.5;
+      color: var(--color-white); }
+  .comments-container .comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: var(--color-white); }
+    .comments-container .comment-form h4 {
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      color: var(--color-white);
+      margin-bottom: 0.5rem; }
+    .comments-container .comment-form .form-input,
+    .comments-container .comment-form .form-textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--color-light);
+      border-radius: 0.5rem;
+      background-color: var(--color-background);
+      color: var(--color-white);
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      transition: border-color 0.3s ease;
+      margin-bottom: 1rem; }
+      .comments-container .comment-form .form-input:focus,
+      .comments-container .comment-form .form-textarea:focus {
+        border-color: var(--color-accent);
+        outline: none; }
+    .comments-container .comment-form .form-textarea {
+      resize: vertical;
+      min-height: 100px; }
+    .comments-container .comment-form button {
+      align-self: flex-start;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 0.5rem;
+      background-color: var(--color-accent);
+      color: var(--color-dark);
+      font-weight: 600;
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      cursor: pointer;
+      transition: background-color 0.3s ease; }
+      .comments-container .comment-form button:hover {
+        opacity: 0.9; }
+    .comments-container .comment-form .pagination {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem; }
+      .comments-container .comment-form .pagination a {
+        text-decoration: none;
+        color: var(--color-accent);
+        font-weight: 500;
+        font-size: clamp(0.9rem, 2vw, 1rem);
+        padding: 0.5rem;
+        transition: color 0.3s ease; }
+      .comments-container .comment-form .pagination a:hover {
+        color: var(--color-primary);
+        text-decoration: underline; }
+      .comments-container .comment-form .pagination span {
+        color: var(--color-secondary) !important;
+        font-size: clamp(0.9rem, 2vw, 1rem); }
 
 @media (max-width: 821px) {
   .trail-title {
     font-size: clamp(1.8rem, 6vw, 2.8rem);
     text-align: center;
-    margin-bottom: 2rem; }
+    margin-bottom: 2rem;
+    padding: 3rem 1rem 0; }
   .trail-detail-grid {
     display: flex;
     flex-direction: column;
     gap: 2rem;
     padding: 1.5rem; }
   .trail-photos {
-    order: 1; }
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; }
   .trail-info {
     order: 2;
     display: flex;
@@ -168,10 +313,27 @@ a {
     font-size: clamp(1rem, 2.8vw, 1.2rem); }
   .trail-description {
     order: 3;
-    padding: 1rem;
+    padding: 1.5rem;
     font-size: clamp(1rem, 2.8vw, 1.2rem);
     line-height: 1.6; }
+  /* Mobile: Stack map and comments */
+  .trail-map-and-comments {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1.5rem; }
+  .trail-map-embed {
+    order: 1;
+    width: 100%; }
   .trail-map-embed iframe {
+    height: 400px; }
+  .comments-container {
+    order: 2;
+    padding: 1.5rem;
+    width: 100%; }
+  .comments-container .comment-form .form-input,
+  .comments-container .comment-form .form-textarea {
+    font-size: clamp(0.85rem, 2.5vw, 1rem); }
+  .comments-container .comment-form button {
     width: 100%;
-    height: 300px;
-    margin-top: 2rem; } }
+    padding: 0.75rem; } }

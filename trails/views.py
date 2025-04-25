@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Trail, TrailImage, Comment
+from django.core.paginator import Paginator
 from .forms import CommentForm
 import requests
 
@@ -21,7 +22,11 @@ def home(request):
 def trail_detail(request, slug):
     trail = get_object_or_404(Trail, slug=slug)
     images = TrailImage.objects.filter(trail=trail)
-    comments = Comment.objects.filter(trail=trail).order_by("-timestamp")
+    comments = Comment.objects.filter(trail=trail).order_by("-created_at")
+
+    paginator = Paginator(comments, 5)  # Show 5 comments per page
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
 
     # Weather API call
     weather_data = None
@@ -54,7 +59,7 @@ def trail_detail(request, slug):
         "trail": trail,
         "images": images,
         "weather": weather_data,
-        "comments": comments,
+        "page_obj": page_obj,  # Add page_obj
         "form": form
     })
 
