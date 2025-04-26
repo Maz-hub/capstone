@@ -29,24 +29,7 @@ SECRET_KEY = 'django-insecure-u+@+!jwr_)_g!5-z2)#1%n3(trx8z8l(2tpmj%_eysnotz#qyr
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-if DEBUG is False:
-    # Redirect all errors to console (for Railway / production)
-    LOGGING = {
-        'version': 1,
-        'disable_existing_loggers': False,
-        'handlers': {
-            'console': {
-                'class': 'logging.StreamHandler',
-                'stream': sys.stdout,
-            },
-        },
-        'root': {
-            'handlers': ['console'],
-            'level': 'INFO',
-        },
-    }
-
-
+DEBUG = True
 
 ALLOWED_HOSTS = ["capstone-production-bdee.up.railway.app"]
 
