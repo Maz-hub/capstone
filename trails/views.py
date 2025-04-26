@@ -59,7 +59,7 @@ def trail_detail(request, slug):
         "trail": trail,
         "images": images,
         "weather": weather_data,
-        "page_obj": page_obj,  # Add page_obj
+        "page_obj": page_obj, # Paginated comments
         "form": form
     })
 

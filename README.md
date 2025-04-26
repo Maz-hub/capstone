@@ -8,56 +8,74 @@ All hikes featured on the site are ones I’ve personally completed, and are pre
 
 ## Distinctiveness and Complexity
 
-**Swiss Romande Hikes** is a personal guide-based web app with a geospatial component. It features a map-based interface, dynamic trail data, and a user-centric design inspired by real-world tourism needs.
+**Swiss Romande Hikes** is a personal guide-based web app with a geospatial component. It features a map-based interface, dynamic trail data, trail-specific weather integration, and a user-centric design inspired by real-world tourism needs.
 
 The application uses:
 
 - **Mapbox GL JS** to render an interactive map with custom markers
-- **JavaScript and the DOM** to connect map markers with trail cards, allowing for a dynamic and engaging experience
-- A **custom SCSS-based design**, for full control over layout and responsive behavior
-- **Django models** to manage trail data and prepare for future extensibility, such as user accounts, reviews, or real-time trail updates
+- **JavaScript** to enhance the dynamic behavior of the site (e.g., filter trails, refresh comments)
+- **SCSS custom design**, for full control over layout and responsive behavior
+- **Django models** to manage dynamic trail data, images, and user-submitted comments
+- **Open-Meteo API** to fetch and display live weather information for each trail page
 
-This project also stands out because it is **based on my personal hiking experience** and includes original content and photos. It combines real-world storytelling with technical implementation — including responsive design, external APIs, and scalable structure.
+This project also stands out because it is **based on my personal hiking experience** and includes original content and photos. It combines real-world storytelling with technical implementation — including responsive design, external APIs, dynamic user-generated content, and scalable structure.
 
 Together, these elements demonstrate both creative originality and the technical complexity expected of a CS50W Capstone.
+
+---
 
 ## Features
 
 ### Core Functionality (Completed)
 
-- 📍 Interactive Map:
+- 📍 **Interactive Map:**
 
-  - Uses Mapbox GL JS to display the Swiss Romande region
+  - Uses Mapbox GL JS to display trails across the Swiss Romande region
   - Custom boot-shaped markers for each trail
-  - Responsive layout for both map and trail details
+  - Fully responsive and mobile-friendly map
 
-- 🥾 Trail Cards:
+- 🥾 **Trail Cards:**
 
-  - Display 6 real trails with original photos and location info
-  - Responsive grid layout for desktop, tablet, and mobile
-  - Clicking a trail card opens a dedicated trail detail page
+  - 6 real trails dynamically loaded from Django models
+  - Display trail name, canton, and thumbnail image
+  - Clicking a trail card opens a dynamic trail detail page
 
-- 🗺️ Trail Detail Pages:
+- 🗺️ **Trail Detail Pages:**
 
-  - Individual pages for each hike, dynamically rendered from Django
-  - Includes image galleries, structured trail information, and full description
-  - Swisstopo map embed for geographical context
+  - Dedicated pages for each hike
+  - Includes photo galleries, structured trail data, real-time weather, full trail description, and Swisstopo map embeds
+  - Organized responsive layout for desktop and mobile
 
-- 🌦️ Weather Integration:
+- 🌦️ **Weather Integration:**
 
-  - Uses Open-Meteo API to display current weather per trail
-  - Real-time temperature and wind speed shown dynamically
+  - Real-time temperature and wind speed pulled from Open-Meteo API
+  - Weather shown directly on each trail page based on trail coordinates
 
-- 🎨 Custom UI:
-  - Styled entirely with SCSS (no Bootstrap)
-  - Google Fonts + theme colors for a personal, clean look
-  - Fully responsive design using CSS Grid and Flexbox
+- 💬 **Trail-Specific Comments:**
+
+  - Visitors can leave a comment about a specific hike
+  - Comments are saved in the database and paginated (5 per page)
+  - New comments dynamically refresh without a full page reload (handled by `comments.js`)
+
+- 🎨 **Custom UI:**
+
+  - Full SCSS-based styling (no Bootstrap)
+  - Google Fonts + theme color palette
+  - Modern, mobile-first layout using CSS Grid and Flexbox
+
+- 🔎 **Trail Filter:**
+  - Users can filter hikes by difficulty level ("Easy", "Intermediate", "Moderate")
+  - Filter is handled with a simple `<select>` input without reloading the whole page
+
+---
 
 ### Optional Future Features
 
-- 👤 User accounts to save favorites or add comments
-- 📸 Scrollable photo gallery per trail
-- 🔍 Trail filter by distance, season, or difficulty
+- 👤 User accounts to save favorites or add personal reviews
+- 📸 Scrollable full-screen photo galleries for each trail
+- 🧭 Advanced trail search filters (distance, season, elevation)
+
+---
 
 ## How to Run Locally
 
@@ -105,22 +123,23 @@ python3 manage.py runserver
 ## Project Structure
 
 capstone/
-├── rivieraroutes/ # Main Django project folder (settings, URLs)  
-├── trails/ # Core app: views, models, templates  
-│ ├── templates/trails/ # HTML templates (layout, homepage, detail pages, etc.)  
-│ ├── static/css/ # Compiled CSS from SCSS  
-│ ├── static/scss/ # Main SCSS files and partials  
-│ ├── static/img/ # Images used in homepage/cards/map markers  
-│ ├── static/js/ # JavaScript (e.g. map.js for Mapbox interaction)  
-│ ├── models.py # Trail, TrailImage models  
-│ ├── views.py # Views including homepage and detail views  
-├── media/ # Folder for uploaded trail images  
-├── db.sqlite3 # Default Django development database  
-├── package.json # Node/NPM config for SCSS build  
+├── rivieraroutes/ # Main Django project folder (settings, URLs)
+├── trails/ # Core app: views, models, templates
+│ ├── templates/trails/ # HTML templates (layout, homepage, trail pages, 404 page)
+│ ├── static/css/ # Compiled CSS
+│ ├── static/scss/ # Main SCSS files and partials
+│ ├── static/img/ # Trail and homepage images
+│ ├── static/js/ # JavaScript (map.js, filter.js, comments.js)
+│ ├── models.py # Trail, TrailImage, and Comment models
+│ ├── views.py # Views for homepage, trail detail, comments
+│ ├── forms.py # Comment form logic
+├── media/trail_images/ # Uploaded images (trail galleries)
+├── db.sqlite3 # Default Django database
+├── package.json # Node/NPM config for SCSS build
+├── package-lock.json # NPM lock file
 ├── README.md # This file
+├── requirements.txt # Python dependencies
+├── runtime.txt # Runtime version (for deployment)
+├── manage.py
 
----
-
-```markdown
-Trail data is currently hardcoded for launch (6 hikes), but the structure supports future integration with Django models and dynamic content.
-```
+Trail data is fully dynamic. Each hike's page, weather information, images, and comments are loaded from the database in real-time.

@@ -55,25 +55,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .addTo(map),
     };
 
-    // Card-to-map interaction
-    //document.querySelectorAll(".trail-card").forEach((card) => {
-    //  card.addEventListener("click", () => {
-    //    const trailId = card.dataset.trail;
-    //    const marker = markers[trailId];
-
-    //    if (marker) {
-    //      map.flyTo({
-    //        center: marker.getLngLat(),
-    //        zoom: 12,
-    //        speed: 1.2,
-    //        curve: 1,
-    //      });
-
-    //      marker.togglePopup();
-    //    }
-    //  });
-    // });
-
     setTimeout(() => {
       map.resize();
     }, 400);
