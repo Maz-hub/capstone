@@ -123,23 +123,24 @@ python3 manage.py runserver
 ## Project Structure
 
 capstone/
-├── rivieraroutes/ # Main Django project folder (settings, URLs)
-├── trails/ # Core app: views, models, templates
-│ ├── templates/trails/ # HTML templates (layout, homepage, trail pages, 404 page)
-│ ├── static/css/ # Compiled CSS
-│ ├── static/scss/ # Main SCSS files and partials
-│ ├── static/img/ # Trail and homepage images
-│ ├── static/js/ # JavaScript (map.js, filter.js, comments.js)
-│ ├── models.py # Trail, TrailImage, and Comment models
-│ ├── views.py # Views for homepage, trail detail, comments
-│ ├── forms.py # Comment form logic
-├── media/trail_images/ # Uploaded images (trail galleries)
-├── db.sqlite3 # Default Django database
-├── package.json # Node/NPM config for SCSS build
-├── package-lock.json # NPM lock file
-├── README.md # This file
-├── requirements.txt # Python dependencies
-├── runtime.txt # Runtime version (for deployment)
-├── manage.py
+
+- rivieraroutes/ # Main Django project folder (settings, URLs)
+- trails/ # Core app: views, models, templates
+  - templates/trails/ # HTML templates (layout, homepage, trail pages, 404 page)
+  - static/css/ # Compiled CSS
+  - static/scss/ # Main SCSS files and partials
+  - static/img/ # Trail and homepage images
+  - static/js/ # JavaScript (map.js, filter.js, comments.js)
+  - models.py # Trail, TrailImage, and Comment models
+  - views.py # Views for homepage, trail detail, comments
+  - forms.py # Comment form logic
+- media/trail_images/ # Uploaded images (trail galleries)
+- db.sqlite3 # Default Django database
+- package.json # Node/NPM config for SCSS build
+- package-lock.json # NPM lock file
+- README.md # This file
+- requirements.txt # Python dependencies
+- runtime.txt # Runtime version (for deployment)
+- manage.py # Django management script
 
 Trail data is fully dynamic. Each hike's page, weather information, images, and comments are loaded from the database in real-time.
