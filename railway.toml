@@ -4,3 +4,10 @@ builder = "heroku/buildpacks:20"
 [env]
 PYTHON_VERSION = "3.12"
 
+[build]
+builder = "NIXPACKS"
+
+[deploy]
+startCommand = "gunicorn rivieraroutes.wsgi"
+
+
