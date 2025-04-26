@@ -124,17 +124,20 @@ python3 manage.py runserver
 
 capstone/
 
+- media/trail_images/ # Uploaded images (trail galleries)
 - rivieraroutes/ # Main Django project folder (settings, URLs)
 - trails/ # Core app: views, models, templates
-  - templates/trails/ # HTML templates (layout, homepage, trail pages, 404 page)
-  - static/css/ # Compiled CSS
-  - static/scss/ # Main SCSS files and partials
+
+  - static/css/ # Compiled CSS (main, trail_detail)
   - static/img/ # Trail and homepage images
   - static/js/ # JavaScript (map.js, filter.js, comments.js)
-  - models.py # Trail, TrailImage, and Comment models
-  - views.py # Views for homepage, trail detail, comments
+  - static/scss/ # Main SCSS files and partials (\_base, main, trail_detail)
+  - templates/trails/ # HTML templates (layout, homepage, trail pages, 404 page)
   - forms.py # Comment form logic
-- media/trail_images/ # Uploaded images (trail galleries)
+  - models.py # Trail, TrailImage, and Comment models
+  - urls.py # urlpatterns for homepage, Redirect to homepage, Trail detail page
+  - views.py # Views for homepage, trail detail, comments
+
 - db.sqlite3 # Default Django database
 - package.json # Node/NPM config for SCSS build
 - package-lock.json # NPM lock file
