@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+import django_heroku
+import sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +27,25 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-u+@+!jwr_)_g!5-z2)#1%n3(trx8z8l(2tpmj%_eysnotz#qyr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+
+
+if DEBUG is False:
+    # Redirect all errors to console (for Railway / production)
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'handlers': {
+            'console': {
+                'class': 'logging.StreamHandler',
+                'stream': sys.stdout,
+            },
+        },
+        'root': {
+            'handlers': ['console'],
+            'level': 'INFO',
+        },
+    }
+
 
 
 ALLOWED_HOSTS = ["capstone-production-bdee.up.railway.app"]
@@ -80,8 +100,12 @@ WSGI_APPLICATION = 'rivieraroutes.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / "db.sqlite3",
+    }
 }
+
 
 
 # Password validation
