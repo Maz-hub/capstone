@@ -53,12 +53,12 @@ h6 {
   --color-text: #eeeeee; // Primary text color
 
   // Additional colors
-  --color-accent: #00fff5; // Bright accent color, good for links or highlights
-  --color-light: #e3feff; // Very light color, useful for backgrounds or light themes
+  --color-accent: #00fff5; // Bright accent color, for links or highlights
+  --color-light: #e3feff; // Very light color
 
   // Utility colors
-  --color-dark: #000000; // Pure black, useful for text or shadows
-  --color-white: #ffffff; // Pure white, useful for contrasting text or backgrounds
+  --color-dark: #000000;
+  --color-white: #ffffff;
 }
 
 body {

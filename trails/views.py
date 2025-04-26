@@ -4,6 +4,7 @@ from django.core.paginator import Paginator
 from .forms import CommentForm
 import requests
 
+#
 def home(request):
     difficulty = request.GET.get('difficulty')
     
@@ -18,7 +19,7 @@ def home(request):
     })
 
 
-
+# Trail detail page
 def trail_detail(request, slug):
     trail = get_object_or_404(Trail, slug=slug)
     images = TrailImage.objects.filter(trail=trail)
@@ -26,7 +27,7 @@ def trail_detail(request, slug):
 
     paginator = Paginator(comments, 5)  # Show 5 comments per page
     page_number = request.GET.get("page")
-    page_obj = paginator.get_page(page_number)
+    page_obj = paginator.get_page(page_number) # Get the comments for the current page
 
     # Weather API call
     weather_data = None

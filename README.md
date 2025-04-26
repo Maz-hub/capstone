@@ -8,7 +8,7 @@ All hikes featured on the site are ones I’ve personally completed, and are pre
 
 ## Distinctiveness and Complexity
 
-**Swiss Romande Hikes** is a personal guide-based web app with a geospatial component. It features a map-based interface, dynamic trail data, trail-specific weather integration, and a user-centric design inspired by real-world tourism needs.
+**Swiss Romande Hikes** is a personal guide-based web app with a geospatial component. It features a map-based interface, dynamic trail data, trail-specific weather integration, and a user-centric design.
 
 The application uses:
 
@@ -26,7 +26,7 @@ Together, these elements demonstrate both creative originality and the technical
 
 ## Features
 
-### Core Functionality (Completed)
+### Core Functionality.
 
 - 📍 **Interactive Map:**
 

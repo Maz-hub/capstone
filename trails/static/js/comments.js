@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
         body: new FormData(form),
         headers: {
           "X-CSRFToken": form.querySelector("[name=csrfmiddlewaretoken]").value,
-        },
+        }, // Include CSRF token
       });
       if (response.ok) {
         form.reset(); // Clear form fields

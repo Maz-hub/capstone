@@ -1,6 +1,7 @@
 from django import forms
 from .models import Comment
 
+# This form is used to create or update comments on trails
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment

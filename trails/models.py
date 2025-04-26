@@ -20,20 +20,21 @@ class Trail(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.name)
-        super().save(*args, **kwargs)
+            self.slug = slugify(self.name) # Generate slug from name
+        super().save(*args, **kwargs) # Call the original save() method
 
 
 # TrailImage model to store multiple images for each trail
 class TrailImage(models.Model):
     trail = models.ForeignKey(Trail, on_delete=models.CASCADE, related_name="images")
-    image = models.ImageField(upload_to='trail_images/')
+    image = models.ImageField(upload_to='trail_images/') 
     caption = models.CharField(max_length=200, blank=True)
 
     def __str__(self):
         return f"Image for {self.trail.name}"
     
-
+# Comment model to store user comments on trails
+# This model is linked to the Trail model via a foreign key
 class Comment(models.Model):
     trail = models.ForeignKey('Trail', on_delete=models.CASCADE, related_name='comments')
     name = models.CharField(max_length=100)

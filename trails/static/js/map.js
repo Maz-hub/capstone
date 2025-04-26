@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     map.addControl(new mapboxgl.NavigationControl());
 
-    // Boot icon factory
+    // Boot icon
     function createBootIcon() {
       const icon = document.createElement("img");
       icon.src = "/static/img/hike_boot.png";
