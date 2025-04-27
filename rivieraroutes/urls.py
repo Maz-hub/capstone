@@ -21,6 +21,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import handler404
 
+# Custom 404 error handler
 handler404 = 'trails.views.custom_404'
 
 
