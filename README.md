@@ -6,6 +6,10 @@
 
 All hikes featured on the site are ones I’ve personally completed, and are presented in a helpful, down-to-earth style — from me to you.
 
+## Live Site
+
+Want to explore the trails yourself? Check out the live version of **Swiss Romande Hikes** at [https://capstone-jaq1.onrender.com](https://capstone-jaq1.onrender.com). I’ve deployed this project so you can experience the hikes I’ve shared, from wherever you are!
+
 ## Distinctiveness and Complexity
 
 **Swiss Romande Hikes** is a personal guide-based web app with a geospatial component. It features a map-based interface, dynamic trail data, trail-specific weather integration, and a user-centric design.
@@ -21,6 +25,10 @@ The application uses:
 This project also stands out because it is **based on my personal hiking experience** and includes original content and photos. It combines real-world storytelling with technical implementation — including responsive design, external APIs, dynamic user-generated content, and scalable structure.
 
 Together, these elements demonstrate both creative originality and the technical complexity expected of a CS50W Capstone.
+
+#### Challenges
+
+Building this project required overcoming challenges like deploying a Django app on Render, integrating external APIs for maps and weather, and ensuring a seamless user experience with dynamic comments that refresh without reloading the page. These aspects pushed me to grow as a developer while creating a practical tool for hikers.
 
 ---
 
@@ -43,7 +51,7 @@ Together, these elements demonstrate both creative originality and the technical
 - 🗺️ **Trail Detail Pages:**
 
   - Dedicated pages for each hike
-  - Includes photo galleries, structured trail data, real-time weather, full trail description, and Swisstopo map embeds
+  - Includes photo galleries, structured trail data, real-time weather, full trail description, and Swisstopo map links
   - Organized responsive layout for desktop and mobile
 
 - 🌦️ **Weather Integration:**
@@ -84,7 +92,7 @@ To run Swiss Romande Hikes locally, follow these steps:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/capstone.git
+git clone https://github.com/Maz-hub/capstone.git
 cd capstone
 ```
 
@@ -100,6 +108,9 @@ source myvenv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
+
+### Prerequisites for SCSS Compilation
+To compile SCSS files, you’ll need [Node.js](https://nodejs.org) installed on your machine. If you don’t have it, download and install it before proceeding.
 
 ### 4. Install and compile SCSS (requires Node.js)
 
@@ -139,6 +150,7 @@ capstone/
   - views.py # Views for homepage, trail detail, comments
 
 - db.sqlite3 # Default Django database
+- Procfile # Deployment configuration for Render
 - package.json # Node/NPM config for SCSS build
 - package-lock.json # NPM lock file
 - README.md # This file
