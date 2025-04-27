@@ -15,7 +15,7 @@ class Trail(models.Model):
     distance = models.CharField(max_length=20, help_text="e.g. 14.5") # Distance of the trail info-box
     duration = models.CharField(max_length=20, help_text="e.g. 1 hour, 4h 30min") # Duration of the trail info-box
     difficulty = models.CharField(max_length=100) # Difficulty of the trail info-box
-    map_embed_url = models.TextField(blank=True, null=True, help_text="Paste only the iframe src URL") # Map embed URL for the trail
+    map_embed_url = models.URLField(blank=True, null=True, help_text="Paste only the URL") # URL for map embed
     
 
     def save(self, *args, **kwargs):
