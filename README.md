@@ -158,7 +158,10 @@ capstone/
 Trail data is fully dynamic. Each hike's page, weather information, images, and comments are loaded from the database in real-time.
 
 ## Live Site
-Check out the live version of Swiss Romande Hikes at https://capstone-jaq1.onrender.com. I’ve deployed this project so you can experience the hikes I’ve shared.
-# Known Issue
-While the site is live, I’ve run into a challenge with the map links on trail pages. Due to Render’s free tier using an ephemeral SQLite database, the map URLs I add in the admin disappear after about 15 minutes of inactivity when the app goes to sleep. I’ve tried various solutions, but haven’t been able to resolve it fully.
+
+Check out the live version of **Swiss Romande Hikes** at [https://capstone-jaq1.onrender.com](https://capstone-jaq1.onrender.com). I’ve deployed this project so you can experience the hikes I’ve shared.
+
+### Known Issue
+
+While the site is live, I’ve run into a challenge with the map links on trail pages. Due to Render’s free tier using an ephemeral SQLite database, the map URLs I add in the admin disappear after about 15 minutes of inactivity when the app goes to sleep. I’ve tried various solutions, but haven’t been able to resolve it fully.  
 Please run the project locally as described above, where all features, including map links, work as intended.
