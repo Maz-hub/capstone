@@ -6,9 +6,6 @@
 
 All hikes featured on the site are ones I’ve personally completed, and are presented in a helpful, down-to-earth style — from me to you.
 
-## Live Site
-
-Want to explore the trails yourself? Check out the live version of **Swiss Romande Hikes** at [https://capstone-jaq1.onrender.com](https://capstone-jaq1.onrender.com). I’ve deployed this project so you can experience the hikes I’ve shared, from wherever you are!
 
 ## Distinctiveness and Complexity
 
@@ -51,7 +48,7 @@ Building this project required overcoming challenges like deploying a Django app
 - 🗺️ **Trail Detail Pages:**
 
   - Dedicated pages for each hike
-  - Includes photo galleries, structured trail data, real-time weather, full trail description, and Swisstopo map links
+  - Includes photo galleries, structured trail data, real-time weather, trail description, and Swisstopo map links
   - Organized responsive layout for desktop and mobile
 
 - 🌦️ **Weather Integration:**
@@ -73,7 +70,7 @@ Building this project required overcoming challenges like deploying a Django app
 
 - 🔎 **Trail Filter:**
   - Users can filter hikes by difficulty level ("Easy", "Intermediate", "Moderate")
-  - Filter is handled with a simple `<select>` input without reloading the whole page
+  - Filter is handled with `<select>` input without reloading the whole page
 
 ---
 
@@ -159,3 +156,9 @@ capstone/
 - manage.py # Django management script
 
 Trail data is fully dynamic. Each hike's page, weather information, images, and comments are loaded from the database in real-time.
+
+## Live Site
+Check out the live version of Swiss Romande Hikes at https://capstone-jaq1.onrender.com. I’ve deployed this project so you can experience the hikes I’ve shared.
+# Known Issue
+While the site is live, I’ve run into a challenge with the map links on trail pages. Due to Render’s free tier using an ephemeral SQLite database, the map URLs I add in the admin disappear after about 15 minutes of inactivity when the app goes to sleep. I’ve tried various solutions, but haven’t been able to resolve it fully.
+Please run the project locally as described above, where all features, including map links, work as intended.
